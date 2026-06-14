@@ -182,7 +182,7 @@
     if (!modal) return;
     modal.classList.add('show');
 
-    var n = 7;
+    var n = 5;
     if (count) count.textContent = n;
     var iv = setInterval(function () {
       n -= 1;
@@ -190,12 +190,12 @@
       if (n <= 0) clearInterval(iv);
     }, 1000);
 
-    setTimeout(function () { window.location.href = 'index.html'; }, 7000);
+    setTimeout(function () { window.location.href = 'index.html'; }, 5000);
   }
 
   function initWip() {
     if (document.body.hasAttribute('data-wip-preview')) {
-      setTimeout(showWipModal, 7000);
+      setTimeout(showWipModal, 5000);
     }
   }
 

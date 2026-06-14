@@ -187,7 +187,7 @@ footer{
 .wip-loader__label{margin-top:22px;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
 .wip-loader__bar{width:210px;height:2px;margin-top:16px;background:var(--border);border-radius:2px;overflow:hidden}
 .wip-loader__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
-.wip-loader.show .wip-loader__bar i{animation:wipFill 7s linear forwards}
+.wip-loader.show .wip-loader__bar i{animation:wipFill 5s linear forwards}
 @keyframes wipSpin{to{transform:rotate(360deg)}}
 @keyframes wipFill{to{width:100%}}
 @keyframes wipFade{from{opacity:0}to{opacity:1}}
@@ -208,7 +208,7 @@ footer{
 .wip-ring svg{width:84px;height:84px;transform:rotate(-90deg)}
 .wip-ring .ring-bg{fill:none;stroke:var(--border);stroke-width:4}
 .wip-ring .ring-fg{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-dasharray:226;stroke-dashoffset:0}
-.wip-modal.show .ring-fg{animation:wipDrain 7s linear forwards}
+.wip-modal.show .ring-fg{animation:wipDrain 5s linear forwards}
 .wip-count{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   font-family:'Playfair Display',serif;font-size:30px;color:var(--gold);
