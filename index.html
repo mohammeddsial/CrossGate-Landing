@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CrossGate Legal — Verify Suppliers in Pakistan, China &amp; the UK</title>
+<meta name="description" content="CrossGate Legal is an AI-powered trade risk intelligence platform helping UK importers verify suppliers, identify legal exposure, and connect with vetted local counsel in Pakistan, China and Central Asia — before you sign a contract or transfer funds."/>
+<meta property="og:title" content="CrossGate Legal — Trade Risk Intelligence"/>
+<meta property="og:description" content="Verify suppliers, identify legal exposure, and connect with vetted counsel before you pay. UK importers sourcing from Pakistan, China and beyond."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* =====================  HERO (bold)  ===================== */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.9}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.5}
+.orb-gold{width:520px;height:520px;top:-160px;right:-120px;background:radial-gradient(circle,rgba(201,169,110,0.42),transparent 70%)}
+.orb-green{width:480px;height:480px;bottom:-200px;left:-140px;background:radial-gradient(circle,rgba(1,132,58,0.30),transparent 70%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,169,110,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 50% 40%,black,transparent 75%);-webkit-mask-image:radial-gradient(circle at 50% 40%,black,transparent 75%)}
+.hero-inner{position:relative;z-index:2;padding:104px 48px 92px;display:grid;grid-template-columns:1.05fr 430px;gap:72px;align-items:center;max-width:1200px;margin:0 auto}
+
+.hero-tag{display:inline-flex;align-items:center;gap:9px;background:rgba(201,169,110,0.1);border:1px solid var(--border);padding:7px 15px;border-radius:30px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:30px}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(201,169,110,0.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,169,110,0.55)}70%{box-shadow:0 0 0 9px rgba(201,169,110,0)}100%{box-shadow:0 0 0 0 rgba(201,169,110,0)}}
+@media (prefers-reduced-motion:reduce){.hero-tag .dot{animation:none}}
+
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,5.4vw,62px);line-height:1.06;font-weight:700;color:var(--cream);margin-bottom:26px;letter-spacing:-0.01em}
+h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold-light) 60%,#fff6e4);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 38px rgba(201,169,110,0.28)}
+.hero-desc{font-size:16.5px;line-height:1.78;color:var(--text-muted);max-width:500px;margin-bottom:38px;font-weight:300}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hero-meta{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hero-meta div{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted);letter-spacing:0.03em}
+.hero-meta i{color:var(--gold);font-size:15px}
+
+/* glass trust card */
+.stats-card{position:relative;overflow:hidden;border-radius:14px;padding:34px;background:linear-gradient(180deg,rgba(26,32,31,0.72),rgba(19,25,24,0.72));border:1px solid var(--border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(0,0,0,0.45)}
+.stats-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.stats-card::after{content:'';position:absolute;inset:0;border-radius:14px;border:1px solid rgba(255,255,255,0.04);pointer-events:none}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.stat-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:5px}
+.stat-divider{border-top:1px solid var(--border);margin:22px 0}
+.trust-line{font-size:12.5px;color:var(--text-muted);line-height:1.65}
+.trust-line strong{color:var(--cream)}
+.flags{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.flag-chip{background:var(--surface2);border:1px solid var(--border);padding:6px 13px;border-radius:30px;font-size:11px;color:var(--gold-light);letter-spacing:0.06em}
+
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;color:var(--text-muted);font-size:18px;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@media (prefers-reduced-motion:reduce){.scroll-cue{animation:none}}
+
+/* =====================  SECTION HEADERS  ===================== */
+.section-title{font-size:clamp(28px,3.6vw,40px)}
+.kicker-line{width:48px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:18px}
+
+/* =====================  SERVICES  ===================== */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.service-card{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .35s;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(201,169,110,0.45);box-shadow:0 24px 50px rgba(0,0,0,0.45)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:48px;height:48px;background:rgba(201,169,110,0.1);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;transition:transform .35s,background .3s}
+.service-card:hover .service-icon{transform:scale(1.08) rotate(-4deg);background:rgba(201,169,110,0.18)}
+.service-icon i{font-size:22px;color:var(--gold)}
+.service-title{font-family:'Playfair Display',serif;font-size:19px;color:var(--cream);margin-bottom:10px;font-weight:600}
+.service-desc{font-size:13.5px;color:var(--text-muted);line-height:1.72;font-weight:300}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.stag{font-size:10px;color:var(--gold);background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.15);padding:4px 11px;border-radius:30px;letter-spacing:0.06em}
+
+/* =====================  WHY NOW  ===================== */
+.risk-strip{position:relative;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 48px;overflow:hidden}
+.risk-strip::before{content:'';position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(222,41,16,0.12),transparent 70%);filter:blur(40px)}
+.risk-inner{position:relative;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.risk-flags{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.rflag{display:flex;align-items:flex-start;gap:14px;padding:17px 19px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;transition:transform .3s,border-color .3s}
+.rflag:hover{transform:translateX(4px);border-color:rgba(201,169,110,0.4)}
+.rflag i{color:var(--gold);font-size:18px;margin-top:2px}
+.rflag-text{font-size:13px;color:var(--cream);font-weight:400}
+.rflag-text span{display:block;font-size:11px;color:var(--text-muted);margin-top:3px;font-weight:300}
+
+/* =====================  PROCESS  ===================== */
+.process-strip{padding:84px 48px;max-width:1200px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:46px;position:relative}
+.steps::before{content:'';position:absolute;top:22px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--border),transparent)}
+.step{text-align:center;padding:0 16px;position:relative}
+.step-num{width:46px;height:46px;background:var(--deep);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 0 0 6px var(--deep),0 0 22px rgba(201,169,110,0.25)}
+.step-title{font-size:13.5px;font-weight:500;color:var(--cream);letter-spacing:0.03em;margin-bottom:8px}
+.step-desc{font-size:12px;color:var(--text-muted);line-height:1.6;font-weight:300}
+
+/* =====================  REGIONS  ===================== */
+.regions-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+.region-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .35s}
+.region-card:hover{transform:translateY(-6px);border-color:rgba(201,169,110,0.45);box-shadow:0 24px 50px rgba(0,0,0,0.45)}
+.region-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.r-pk::after{background:linear-gradient(90deg,#01411C,#01843A)}
+.r-cn::after{background:linear-gradient(90deg,#DE2910,#FFDE00)}
+.r-ca{opacity:0.72}
+.r-ca::after{background:linear-gradient(90deg,#444441,#5F5E5A)}
+.region-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.region-name{font-family:'Playfair Display',serif;font-size:21px;color:var(--cream)}
+.region-badge{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:rgba(201,169,110,0.12);border:1px solid var(--border);padding:4px 10px;border-radius:30px}
+.region-sub{font-size:11px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px}
+.region-features{list-style:none;display:flex;flex-direction:column;gap:9px}
+.region-features li{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;font-weight:300}
+.region-features li i{color:var(--gold);font-size:13px}
+.region-wip{font-size:12px;color:var(--text-muted);line-height:1.7;font-weight:300;font-style:italic}
+.region-wip-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--gold-light);letter-spacing:0.06em;margin-top:14px}
+.region-wip-tag i{font-size:13px}
+
+/* =====================  CTA  ===================== */
+.cta-banner{position:relative;background:linear-gradient(180deg,var(--surface),rgba(19,25,24,0.6));border:1px solid var(--border);border-radius:16px;padding:60px 48px;text-align:center;margin:72px auto;max-width:1104px;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 0%,rgba(201,169,110,0.12),transparent 70%);pointer-events:none}
+.cta-banner::after{content:'';position:absolute;top:-1px;left:18%;right:18%;height:1px;background:var(--gold);box-shadow:0 0 20px rgba(201,169,110,0.6)}
+.cta-title{position:relative;font-family:'Playfair Display',serif;font-size:clamp(28px,3.6vw,40px);color:var(--cream);margin-bottom:14px}
+.cta-sub{position:relative;font-size:14.5px;color:var(--text-muted);margin-bottom:30px;font-weight:300}
+.cta-actions{position:relative;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding:80px 24px 64px}
+  .scroll-cue{display:none}
+  .risk-strip,.process-strip{padding:56px 24px}
+  .services-grid,.regions-row,.risk-inner{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:30px}.steps::before{display:none}
+  .cta-banner{margin:48px 24px;padding:44px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="index.html" aria-label="CrossGate Legal — home">
+    <span class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,3 34,12 22,15.5 13.5,11" fill="#C9A96E"/>
+        <polygon points="13,13 25,17.5 18,21.5 8.5,18" fill="#C9A96E" opacity="0.9"/>
+        <polygon points="19.5,20.5 28,25.5 20.5,28.5 14,24.5" fill="#C9A96E" opacity="0.8"/>
+        <polygon points="11,21.5 18.5,25.5 14,34 8.5,27.5" fill="#C9A96E" opacity="0.68"/>
+      </svg>
+    </span>
+    <span>
+      <span class="logo-text">CrossGate Legal</span>
+      <span class="logo-sub" style="display:block">Trade Risk Intelligence</span>
+    </span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><i class="ti ti-menu-2"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#services">Services</a>
+    <a href="#why">Why now</a>
+    <a href="#regions">Regions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Start verification</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <canvas id="heroCanvas"></canvas>
+    <span class="orb orb-gold"></span>
+    <span class="orb orb-green"></span>
+    <span class="hero-grid"></span>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag" data-reveal><span class="dot"></span>AI-powered trade risk intelligence</div>
+      <h1 data-reveal style="--rd:.08s">Trade with confidence.<br/><em>Reduce risk</em> at the source.</h1>
+      <p class="hero-desc" data-reveal style="--rd:.16s">CrossGate Legal helps UK importers verify suppliers, identify legal exposure, and connect with vetted counsel — before you sign a contract or transfer funds to partners in Pakistan, China, and beyond.</p>
+      <div class="hero-actions" data-reveal style="--rd:.24s">
+        <a href="contact.html" class="btn-primary">Verify a supplier</a>
+        <a href="#services" class="btn-ghost">Learn more</a>
+      </div>
+      <div class="hero-meta" data-reveal style="--rd:.32s">
+        <div><i class="ti ti-shield-check"></i>Verify before you pay</div>
+        <div><i class="ti ti-world"></i>Pakistan · China · UK</div>
+        <div><i class="ti ti-lock"></i>Confidential by default</div>
+      </div>
+    </div>
+    <div class="stats-card" data-reveal style="--rd:.2s">
+      <div class="stats-grid">
+        <div><div class="stat-num" data-count="2">2</div><div class="stat-label">Languages</div></div>
+        <div><div class="stat-num" data-count="48" data-suffix="h">48h</div><div class="stat-label">Report turnaround</div></div>
+        <div><div class="stat-num">AI</div><div class="stat-label">Powered search</div></div>
+        <div><div class="stat-num">UK</div><div class="stat-label">Focused coverage</div></div>
+      </div>
+      <div class="stat-divider"></div>
+      <p class="trust-line">Built for <strong>UK businesses</strong> importing from emerging markets. Verify <strong>before</strong> you pay — not after a dispute arises.</p>
+      <div class="flags">
+        <div class="flag-chip">UK</div>
+        <div class="flag-chip">Pakistan</div>
+        <div class="flag-chip">China</div>
+        <div class="flag-chip">Central Asia · soon</div>
+      </div>
+    </div>
+  </div>
+  <a href="#services" class="scroll-cue" aria-label="Scroll to services"><i class="ti ti-chevron-down"></i></a>
+</header>
+
+<section class="section" id="services">
+  <div class="kicker-line" data-reveal></div>
+  <div class="section-label" data-reveal>Our services</div>
+  <div class="section-title" data-reveal style="--rd:.06s">Three layers of protection<br/>for every import deal</div>
+  <div class="section-sub" data-reveal style="--rd:.12s">Before contracts are signed or funds are wired, CrossGate Legal arms you with verified intelligence — legal, financial, and reputational.</div>
+  <div class="services-grid">
+    <div class="service-card" data-reveal>
+      <div class="service-icon"><i class="ti ti-user-search"></i></div>
+      <div class="service-title">Supplier verification</div>
+      <p class="service-desc">Deep checks on business registration, ownership, trading history, and financial health — including matching bank account holders against the registered company name to flag payment fraud.</p>
+      <div class="service-tags"><span class="stag">Registry checks</span><span class="stag">Ownership mapping</span><span class="stag">Payment-fraud screen</span></div>
+    </div>
+    <div class="service-card" data-reveal style="--rd:.1s">
+      <div class="service-icon"><i class="ti ti-alert-triangle"></i></div>
+      <div class="service-title">Legal risk identification</div>
+      <p class="service-desc">Surface active litigation, sanctions exposure, compliance violations, and regulatory red flags across UK, Pakistani, and Chinese legal databases.</p>
+      <div class="service-tags"><span class="stag">Sanctions screening</span><span class="stag">Litigation history</span><span class="stag">Compliance audit</span></div>
+    </div>
+    <div class="service-card" data-reveal style="--rd:.2s">
+      <div class="service-icon"><i class="ti ti-gavel"></i></div>
+      <div class="service-title">Vetted local counsel</div>
+      <p class="service-desc">Direct connections to pre-screened lawyers with expertise in cross-border trade, contract review, and dispute resolution — fluent in the local language.</p>
+      <div class="service-tags"><span class="stag">Trade lawyers</span><span class="stag">Contract review</span><span class="stag">Dispute resolution</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="risk-strip" id="why">
+  <div class="risk-inner">
+    <div data-reveal>
+      <div class="kicker-line"></div>
+      <div class="section-label">Why now</div>
+      <div class="section-title" style="font-size:clamp(24px,3vw,32px)">The cost of skipping due diligence is rising</div>
+      <p class="section-sub" style="max-width:none">HMRC is expanding post-clearance audits on importers — scrutinising origin claims, commodity codes, and declared values, with records reviewable up to three years back. Pair that with rising supplier fraud, and verifying first is no longer optional. These are the red flags our AI search is built to catch:</p>
+    </div>
+    <div class="risk-flags">
+      <div class="rflag" data-reveal><i class="ti ti-file-alert"></i><div class="rflag-text">Hidden litigation records<span>Active or past disputes the supplier won't disclose</span></div></div>
+      <div class="rflag" data-reveal style="--rd:.08s"><i class="ti ti-id-off"></i><div class="rflag-text">Fake, borrowed, or inconsistent licenses<span>Registrations that don't match official databases</span></div></div>
+      <div class="rflag" data-reveal style="--rd:.16s"><i class="ti ti-building-off"></i><div class="rflag-text">Shell companies &amp; identity swaps<span>Entities operating under different names</span></div></div>
+      <div class="rflag" data-reveal style="--rd:.24s"><i class="ti ti-cash-off"></i><div class="rflag-text">Poor financial standing<span>Weak balance sheets and payment-fraud signals</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process-strip">
+  <div class="kicker-line" data-reveal></div>
+  <div class="section-label" data-reveal>How it works</div>
+  <div class="section-title" data-reveal style="font-size:clamp(22px,2.8vw,30px);margin-bottom:0;--rd:.06s">From inquiry to confident contract in four steps</div>
+  <div class="steps">
+    <div class="step" data-reveal><div class="step-num">1</div><div class="step-title">Submit supplier details</div><p class="step-desc">Share the supplier's name, registration number, and jurisdiction.</p></div>
+    <div class="step" data-reveal style="--rd:.1s"><div class="step-num">2</div><div class="step-title">AI-powered search</div><p class="step-desc">Our bilingual model scans legal, financial, and regulatory databases in real time.</p></div>
+    <div class="step" data-reveal style="--rd:.2s"><div class="step-num">3</div><div class="step-title">Risk intelligence report</div><p class="step-desc">A structured report with risk ratings, red flags, and recommended actions.</p></div>
+    <div class="step" data-reveal style="--rd:.3s"><div class="step-num">4</div><div class="step-title">Connect with counsel</div><p class="step-desc">Where legal support is needed, we match you to the right vetted lawyer, fast.</p></div>
+  </div>
+</section>
+
+<hr class="divider-line"/>
+
+<section class="section" id="regions">
+  <div class="kicker-line" data-reveal></div>
+  <div class="section-label" data-reveal>Regional coverage</div>
+  <div class="section-title" data-reveal style="--rd:.06s">Deep local intelligence,<br/>where it matters most</div>
+  <div class="regions-row">
+    <div class="region-card r-pk" data-reveal>
+      <div class="region-head"><div class="region-name">Pakistan</div><div class="region-badge">Live</div></div>
+      <div class="region-sub">Urdu · English coverage</div>
+      <ul class="region-features">
+        <li><i class="ti ti-check"></i>SECP company registry checks</li>
+        <li><i class="ti ti-check"></i>FBR tax compliance verification</li>
+        <li><i class="ti ti-check"></i>High Court record searches</li>
+        <li><i class="ti ti-check"></i>Lawyers in Karachi, Lahore, Islamabad</li>
+      </ul>
+    </div>
+    <div class="region-card r-cn" data-reveal style="--rd:.1s">
+      <div class="region-head"><div class="region-name">China</div><div class="region-badge">Live</div></div>
+      <div class="region-sub">Mandarin · English coverage</div>
+      <ul class="region-features">
+        <li><i class="ti ti-check"></i>SAMR business registration checks</li>
+        <li><i class="ti ti-check"></i>OFAC &amp; EU sanctions screening</li>
+        <li><i class="ti ti-check"></i>Litigation and enforcement records</li>
+        <li><i class="ti ti-check"></i>Lawyers in Shanghai, Beijing, Shenzhen</li>
+      </ul>
+    </div>
+    <div class="region-card r-ca" data-reveal style="--rd:.2s">
+      <div class="region-head"><div class="region-name">Central Asia</div></div>
+      <div class="region-sub">Coverage expanding</div>
+      <p class="region-wip">We're extending our verification network across Kazakhstan, Uzbekistan, and the wider region — registries, ownership mapping, and local counsel.</p>
+      <div class="region-wip-tag"><i class="ti ti-progress"></i>Under progress</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" data-reveal>
+  <div class="cta-title">Safe trade starts here.</div>
+  <p class="cta-sub">Get a supplier verification report or speak with a regional trade law expert today.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-primary">Request a report</a>
+    <a href="contact.html?intent=lawyer" class="btn-ghost">Speak to a lawyer</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
+  <div class="foot-links">
+    <a href="#">Privacy policy</a>
+    <a href="#">Terms of service</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

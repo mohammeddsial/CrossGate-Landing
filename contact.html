@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact &amp; Verification Request — CrossGate Legal</title>
+<meta name="description" content="Request a supplier verification report or speak with a vetted cross-border trade lawyer. Tell CrossGate Legal about your supplier in Pakistan, China or beyond and we'll respond with next steps."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ---- page-specific: contact ---- */
+.intro{padding:80px 48px 8px;max-width:1080px;margin:0 auto;text-align:center}
+h1{font-family:'Playfair Display',serif;font-size:44px;line-height:1.12;font-weight:700;color:var(--cream);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--gold)}
+.intro p{font-size:16px;line-height:1.8;color:var(--text-muted);font-weight:300;max-width:620px;margin:0 auto}
+
+.contact-wrap{max-width:1080px;margin:0 auto;padding:48px 48px 72px;display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
+
+/* form card */
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:36px 36px 32px;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.form-intent{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.intent-opt{flex:1;min-width:150px;cursor:pointer}
+.intent-opt input{position:absolute;opacity:0;pointer-events:none}
+.intent-face{display:block;border:1px solid var(--border);border-radius:6px;padding:14px 16px;transition:all 0.2s;background:var(--deep)}
+.intent-face i{color:var(--gold);font-size:18px}
+.intent-face .it{display:block;font-size:13px;color:var(--cream);margin-top:8px;font-weight:500}
+.intent-face .is{display:block;font-size:11px;color:var(--text-muted);margin-top:3px;font-weight:300;line-height:1.5}
+.intent-opt input:checked + .intent-face{border-color:var(--gold);background:var(--surface2)}
+
+.field{margin-bottom:18px}
+.field.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-light);margin-bottom:7px}
+label .opt{color:var(--text-muted);text-transform:none;letter-spacing:0;font-size:11px}
+input,select,textarea{
+  width:100%;background:var(--deep);border:1px solid var(--border);border-radius:4px;
+  padding:11px 13px;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;
+  font-weight:300;transition:border-color 0.2s;
+}
+input::placeholder,textarea::placeholder{color:#4f5a55}
+input:hover,select:hover,textarea:hover{border-color:rgba(201,169,110,0.35)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px}
+textarea{resize:vertical;min-height:96px;line-height:1.6}
+.form-actions{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+.form-note{font-size:11px;color:var(--text-muted);line-height:1.6;margin-top:18px;font-weight:300}
+.form-success{display:none;background:rgba(201,169,110,0.08);border:1px solid var(--border);border-radius:8px;padding:24px;text-align:center}
+.form-success i{font-size:30px;color:var(--gold)}
+.form-success h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin:12px 0 8px}
+.form-success p{font-size:13px;color:var(--text-muted);font-weight:300;line-height:1.7}
+
+/* info column */
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px}
+.info-card + .info-card{margin-top:16px}
+.info-card h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--cream);margin-bottom:18px}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.info-row:last-child{margin-bottom:0}
+.info-row i{color:var(--gold);font-size:17px;margin-top:2px;flex-shrink:0}
+.info-row .il{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px}
+.info-row .iv{font-size:13.5px;color:var(--cream);font-weight:300;line-height:1.5;word-break:break-word}
+.info-row .iv a{color:var(--gold-light);text-decoration:none}
+.info-row .iv a:hover{color:var(--gold)}
+.region-pills{display:flex;flex-wrap:wrap;gap:7px}
+.region-pill{font-size:11px;color:var(--gold-light);background:var(--surface2);border:1px solid var(--border);padding:5px 11px;border-radius:2px;letter-spacing:0.05em}
+.assurance{font-size:12px;color:var(--text-muted);line-height:1.7;font-weight:300}
+.assurance strong{color:var(--cream);font-weight:400}
+
+@media (max-width:900px){
+  .intro{padding:56px 24px 4px}
+  h1{font-size:32px}
+  .contact-wrap{grid-template-columns:1fr;gap:24px;padding:36px 24px 56px}
+  .form-card{padding:28px 22px}
+}
+@media (max-width:520px){
+  .field.row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-wip-preview>
+
+<nav class="nav">
+  <a class="logo" href="index.html" aria-label="CrossGate Legal — home">
+    <span class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,3 34,12 22,15.5 13.5,11" fill="#C9A96E"/>
+        <polygon points="13,13 25,17.5 18,21.5 8.5,18" fill="#C9A96E" opacity="0.9"/>
+        <polygon points="19.5,20.5 28,25.5 20.5,28.5 14,24.5" fill="#C9A96E" opacity="0.8"/>
+        <polygon points="11,21.5 18.5,25.5 14,34 8.5,27.5" fill="#C9A96E" opacity="0.68"/>
+      </svg>
+    </span>
+    <span>
+      <span class="logo-text">CrossGate Legal</span>
+      <span class="logo-sub" style="display:block">Trade Risk Intelligence</span>
+    </span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><i class="ti ti-menu-2"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#why">Why now</a>
+    <a href="index.html#regions">Regions</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Start verification</a>
+</nav>
+
+<section class="intro">
+  <span class="eyebrow"><i class="ti ti-shield-check"></i>Start your verification</span>
+  <h1>Verify before you pay.<br/><em>Tell us about your supplier.</em></h1>
+  <p>Share a few details and we'll come back with a clear path forward — a supplier verification report, an introduction to vetted local counsel, or both. No obligation to proceed.</p>
+</section>
+
+<div class="contact-wrap">
+  <!-- FORM -->
+  <div>
+    <form class="form-card" id="verifyForm" novalidate>
+      <fieldset class="form-intent" style="border:none">
+        <legend style="position:absolute;left:-9999px">What do you need?</legend>
+        <label class="intent-opt">
+          <input type="radio" name="intent" value="report" checked/>
+          <span class="intent-face">
+            <i class="ti ti-file-search"></i>
+            <span class="it">Verification report</span>
+            <span class="is">Run checks on a specific supplier</span>
+          </span>
+        </label>
+        <label class="intent-opt">
+          <input type="radio" name="intent" value="lawyer"/>
+          <span class="intent-face">
+            <i class="ti ti-gavel"></i>
+            <span class="it">Speak to a lawyer</span>
+            <span class="is">Connect with vetted local counsel</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <div class="field row">
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required/>
+        </div>
+        <div>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" autocomplete="organization" placeholder="Acme Imports Ltd" required/>
+        </div>
+      </div>
+
+      <div class="field row">
+        <div>
+          <label for="email">Work email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@company.co.uk" required/>
+        </div>
+        <div>
+          <label for="phone">Phone <span class="opt">(optional)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+44 …"/>
+        </div>
+      </div>
+
+      <div class="field row">
+        <div>
+          <label for="supplier">Supplier name</label>
+          <input id="supplier" name="supplier" type="text" placeholder="Registered company name" required/>
+        </div>
+        <div>
+          <label for="reg">Registration no. <span class="opt">(if known)</span></label>
+          <input id="reg" name="reg" type="text" placeholder="e.g. SECP / SAMR number"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="jurisdiction">Supplier jurisdiction</label>
+        <select id="jurisdiction" name="jurisdiction" required>
+          <option value="" disabled selected>Select a region…</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="China">China</option>
+          <option value="Central Asia">Central Asia</option>
+          <option value="Other">Other / not sure</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Anything else we should know? <span class="opt">(optional)</span></label>
+        <textarea id="message" name="message" placeholder="Deal value, timeline, specific concerns, or the kind of legal support you're after."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Submit request</button>
+        <a href="index.html#services" class="btn-ghost">How it works</a>
+      </div>
+      <p class="form-note"><i class="ti ti-lock" style="color:var(--gold)"></i> Your details are used only to prepare your response. We typically reply within one business day.</p>
+    </form>
+
+    <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+      <i class="ti ti-circle-check"></i>
+      <h3>Request received</h3>
+      <p>Thank you — we've noted your details and will be in touch shortly with next steps for your supplier verification.</p>
+    </div>
+  </div>
+
+  <!-- INFO COLUMN -->
+  <aside>
+    <div class="info-card">
+      <h3>Get in touch directly</h3>
+      <div class="info-row">
+        <i class="ti ti-mail"></i>
+        <div><div class="il">Email</div><div class="iv"><a href="mailto:hello@crossgatelegal.com">hello@crossgatelegal.com</a></div></div>
+      </div>
+      <div class="info-row">
+        <i class="ti ti-map-pin"></i>
+        <div><div class="il">Based in</div><div class="iv">United Kingdom · serving importers nationwide</div></div>
+      </div>
+      <div class="info-row">
+        <i class="ti ti-clock"></i>
+        <div><div class="il">Response time</div><div class="iv">Within one business day</div></div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Coverage</h3>
+      <div class="region-pills">
+        <span class="region-pill">UK</span>
+        <span class="region-pill">Pakistan · Live</span>
+        <span class="region-pill">China · Live</span>
+        <span class="region-pill">Central Asia · soon</span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Why importers choose us</h3>
+      <p class="assurance"><strong>Verify before you pay</strong> — not after a dispute arises. We pair first-hand cross-border legal practice with AI-powered research across legal, financial, and regulatory databases in the supplier's own language.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
+  <div class="foot-links">
+    <a href="#">Privacy policy</a>
+    <a href="#">Terms of service</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+  // Preselect intent from ?intent=lawyer
+  (function(){
+    var p=new URLSearchParams(window.location.search).get('intent');
+    if(p==='lawyer'){var r=document.querySelector('input[name="intent"][value="lawyer"]');if(r)r.checked=true;}
+  })();
+
+  // Client-side submit handling.
+  // NOTE FOR DEVS: wire this to your real intake endpoint / CRM / email service.
+  (function(){
+    var form=document.getElementById('verifyForm'),ok=document.getElementById('formSuccess');
+    if(!form)return;
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return;}
+      form.style.display='none';
+      ok.style.display='block';
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  })();
+</script>
+</body>
+</html>
