@@ -144,7 +144,7 @@ footer{
 }
 .foot-brand .logo-text{font-size:18px}
 .foot-brand p{font-size:14px;color:var(--text-muted);line-height:1.8;margin-top:12px;font-weight:300;max-width:300px}
-.foot-col h4{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.foot-col h4,.foot-col h3{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .foot-col a{display:block;font-size:14px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;font-weight:300;transition:color .2s}
 .foot-col a:hover{color:var(--gold-light)}
 .foot-social{display:flex;gap:12px;margin-top:16px}
