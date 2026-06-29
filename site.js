@@ -35,20 +35,23 @@
   }
 
   function initMobileOverlay() {
+    var menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+    var closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+
     var toggle = document.querySelector('.nav-toggle');
     var overlay = document.getElementById('navOverlay');
     if (!toggle || !overlay) return;
     var links = overlay.querySelectorAll('a');
     toggle.addEventListener('click', function () {
       var open = overlay.classList.toggle('open');
-      toggle.innerHTML = open ? '<i class="ti ti-x"></i>' : '<i class="ti ti-menu-2"></i>';
+      toggle.innerHTML = open ? closeIcon : menuIcon;
       toggle.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
     });
     links.forEach(function (a) {
       a.addEventListener('click', function () {
         overlay.classList.remove('open');
-        toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+        toggle.innerHTML = menuIcon;
         toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
