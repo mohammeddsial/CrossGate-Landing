@@ -13,11 +13,12 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.crossgatelegal.com
+          username: ftp_push@crossgatelegal.com
           password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
           local-dir: ./
-          server-dir: ${{ secrets.FTP_TARGET_DIR }}
+          server-dir: /
           exclude: |
             .git/**
             .gitignore
