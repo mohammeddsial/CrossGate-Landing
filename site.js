@@ -6,7 +6,16 @@
 
   function injectChrome() {
     var frag = document.createElement('div');
-    frag.innerHTML = '<div class="scroll-progress" id="scrollProgress"></div>';
+    frag.innerHTML = '<div class="scroll-progress" id="scrollProgress"></div>' +
+      '<div class="cookie-banner" id="cookieBanner" aria-label="Cookie consent">' +
+        '<div class="cookie-inner">' +
+          '<span class="cookie-text">We use essential cookies only. By continuing, you accept our <a href="privacy.html">Privacy Policy</a>.</span>' +
+          '<div class="cookie-actions">' +
+            '<button class="cookie-reject" id="cookieReject">Reject</button>' +
+            '<button class="cookie-accept" id="cookieAccept">Accept</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
     while (frag.firstChild) document.body.appendChild(frag.firstChild);
   }
 
@@ -142,6 +151,18 @@
     gsap.to('.orb-green', { x: -18, y: 16, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   }
 
+  // ---- Cookie consent banner ----
+  function initCookieBanner() {
+    if (localStorage.getItem('cookie_consent')) return;
+    var banner = document.getElementById('cookieBanner');
+    var accept = document.getElementById('cookieAccept');
+    var reject = document.getElementById('cookieReject');
+    if (!banner) return;
+    setTimeout(function(){ banner.classList.add('show'); }, 500);
+    if (accept) accept.addEventListener('click', function(){ localStorage.setItem('cookie_consent','accepted'); banner.classList.remove('show'); });
+    if (reject) reject.addEventListener('click', function(){ localStorage.setItem('cookie_consent','rejected'); banner.classList.remove('show'); });
+  }
+
   function boot() {
     injectChrome();
     initScroll();
@@ -152,6 +173,7 @@
     initGsapStaggers();
     initConstellation();
     initHeroGradient();
+    initCookieBanner();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

@@ -263,6 +263,20 @@ footer{
 @keyframes wipPop{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes wipDrain{to{stroke-dashoffset:226}}
 
+/* =======================  COOKIE BANNER  ======================= */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:999;padding:16px 24px 20px;background:var(--surface);border-top:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;animation:cookieFade .4s ease}
+.cookie-banner.show{display:block}
+.cookie-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cookie-text{font-size:13px;color:var(--text-muted);line-height:1.6;font-weight:300;flex:1;min-width:240px}
+.cookie-text a{color:var(--gold-light);text-decoration:underline}
+.cookie-text a:hover{color:var(--gold)}
+.cookie-actions{display:flex;gap:10px;flex-shrink:0}
+.cookie-accept{background:var(--gold);color:var(--deep);font-size:12px;font-weight:500;padding:9px 22px;border-radius:3px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:0.06em;transition:background .2s}
+.cookie-accept:hover{background:var(--gold-light)}
+.cookie-reject{background:transparent;color:var(--text-muted);font-size:12px;padding:9px 22px;border-radius:3px;border:1px solid var(--border);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.cookie-reject:hover{border-color:var(--gold);color:var(--gold)}
+@keyframes cookieFade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
 @media (prefers-reduced-motion:reduce){
   [data-reveal]{opacity:1;transform:none}
   .wip-loader__mark{animation:none}
