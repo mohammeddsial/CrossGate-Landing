@@ -174,6 +174,16 @@ h1 em{font-style:italic;color:var(--gold)}
   <a href="contact.html" class="nav-cta">Start verification</a>
 </nav>
 
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#why">Why now</a>
+  <a href="index.html#regions">Regions</a>
+  <a href="about.html">About</a>
+  <a href="team.html" class="active">Team</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-overlay-cta">Start verification</a>
+</div>
+
 <main id="main-content">
 
 <section class="intro">
@@ -195,12 +205,16 @@ h1 em{font-style:italic;color:var(--gold)}
     <div>
       <h3 class="team-name">Muhammad Salman Ajaib</h3>
       <div class="team-role">Founder</div>
-      <div class="team-flag"><i class="ti ti-map-pin"></i>Pakistan · UK · China</div>
+      <div class="team-flag"><i class="ti ti-map-pin"></i>🇵🇰 · 🇬🇧 · 🇨🇳 · Pakistan · UK · China</div>
       <p class="team-bio">Foreign-qualified lawyer with 10+ years of practice across Pakistan and the UK. LL.M in International Business Law from NUS &amp; Shanghai. Qualifying as a solicitor in England &amp; Wales. The founding vision behind CrossGate Legal's intelligence-led approach.</p>
       <div class="team-tags">
         <span class="team-tag">Litigation</span>
         <span class="team-tag">Trade law</span>
         <span class="team-tag">AI legal research</span>
+      </div>
+      <div class="team-social">
+        <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+        <a href="mailto:" aria-label="Email"><i class="ti ti-mail"></i></a>
       </div>
     </div>
   </article>
@@ -209,12 +223,16 @@ h1 em{font-style:italic;color:var(--gold)}
     <img src="images/raja-adnan.jpg" alt="Raja Adnan Aslam" class="team-photo" loading="lazy"/>
     <h3 class="team-name">Raja Adnan Aslam</h3>
     <div class="team-role">Working Partner — Pakistan</div>
-    <div class="team-flag"><i class="ti ti-map-pin"></i>Pakistan</div>
+    <div class="team-flag"><i class="ti ti-map-pin"></i>🇵🇰 · Pakistan</div>
     <p class="team-bio">Practising lawyer based in Pakistan, driving CrossGate Legal's on-the-ground verification and legal liaison work. Deep experience with local courts, regulatory bodies, and corporate registries across major Pakistani jurisdictions.</p>
     <div class="team-tags">
       <span class="team-tag">Corporate law</span>
       <span class="team-tag">Regulatory compliance</span>
       <span class="team-tag">Litigation</span>
+    </div>
+    <div class="team-social">
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="mailto:" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
   </article>
 
@@ -222,12 +240,16 @@ h1 em{font-style:italic;color:var(--gold)}
     <img src="images/rana-razzaque.jpg" alt="Rana Abdul Razzaque" class="team-photo" loading="lazy"/>
     <h3 class="team-name">Rana Abdul Razzaque</h3>
     <div class="team-role">Collaborating Law Firm Partner — Lahore</div>
-    <div class="team-flag"><i class="ti ti-map-pin"></i>Lahore, Pakistan</div>
+    <div class="team-flag"><i class="ti ti-map-pin"></i>🇵🇰 · Lahore, Pakistan</div>
     <p class="team-bio">Partner at a leading Lahore-based law firm, bringing extensive experience in cross-border commercial transactions, contract law, and dispute resolution. Key local partner for CrossGate Legal's client work in the Punjab region.</p>
     <div class="team-tags">
       <span class="team-tag">Commercial law</span>
       <span class="team-tag">Contracts</span>
       <span class="team-tag">Dispute resolution</span>
+    </div>
+    <div class="team-social">
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="mailto:" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
   </article>
 
@@ -235,12 +257,16 @@ h1 em{font-style:italic;color:var(--gold)}
     <div class="monogram" role="img" aria-label="Shao Bai Yun">SBY</div>
     <h3 class="team-name">Shao Bai Yun</h3>
     <div class="team-role">Chinese &amp; Australian Qualified Lawyer</div>
-    <div class="team-flag"><i class="ti ti-map-pin"></i>Shanghai, China</div>
+    <div class="team-flag"><i class="ti ti-map-pin"></i>🇨🇳 · 🇦🇺 · Shanghai, China</div>
     <p class="team-bio">Dually qualified lawyer in China and Australia, based in Shanghai. Deep expertise in Chinese corporate law, foreign investment regulation, and cross-border trade compliance spanning both common law and civil law systems.</p>
     <div class="team-tags">
       <span class="team-tag">Chinese corporate law</span>
       <span class="team-tag">Foreign investment</span>
       <span class="team-tag">Trade compliance</span>
+    </div>
+    <div class="team-social">
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="mailto:" aria-label="Email"><i class="ti ti-mail"></i></a>
     </div>
   </article>
 
@@ -257,17 +283,50 @@ h1 em{font-style:italic;color:var(--gold)}
 
 </main>
 
+<div class="mobile-cta">
+  <a href="contact.html" class="btn-primary">Verify a supplier</a>
+</div>
 <footer>
-  <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
-  <div class="foot-links">
-    <a href="#">Privacy policy</a>
-    <a href="#">Terms of service</a>
+  <div class="foot-brand">
+    <span class="logo-text">CrossGate Legal</span>
+    <span class="logo-sub" style="display:block;margin-top:2px">Trade Risk Intelligence</span>
+    <p>AI-powered trade risk intelligence helping UK importers verify suppliers, identify legal exposure, and connect with vetted counsel across Pakistan, China, and beyond.</p>
+    <div class="foot-social">
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+      <a href="mailto:admin@crossgatelegal.com" aria-label="Email"><i class="ti ti-mail"></i></a>
+    </div>
+  </div>
+  <div class="foot-col">
+    <h4>Services</h4>
+    <a href="index.html#services">Supplier verification</a>
+    <a href="index.html#services">Legal risk identification</a>
+    <a href="index.html#services">Vetted local counsel</a>
+  </div>
+  <div class="foot-col">
+    <h4>Company</h4>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
     <a href="contact.html">Contact</a>
+  </div>
+  <div class="foot-col">
+    <h4>Coverage</h4>
+    <a href="index.html#regions">Pakistan</a>
+    <a href="index.html#regions">China</a>
+    <a href="index.html#regions">Central Asia</a>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
+    <a href="#" class="back-top"><i class="ti ti-arrow-up"></i>Back to top</a>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="site.js"></script>
+<script>
+document.querySelector('.back-top')?.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
 </body>
 </html>

@@ -162,6 +162,16 @@ h1 em{font-style:italic;color:var(--gold)}
   <a href="contact.html" class="nav-cta">Start verification</a>
 </nav>
 
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#why">Why now</a>
+  <a href="index.html#regions">Regions</a>
+  <a href="about.html" class="active">About</a>
+  <a href="team.html">Team</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-overlay-cta">Start verification</a>
+</div>
+
 <main id="main-content">
 
 <section class="intro">
@@ -255,17 +265,50 @@ h1 em{font-style:italic;color:var(--gold)}
 
 </main>
 
+<div class="mobile-cta">
+  <a href="contact.html" class="btn-primary">Verify a supplier</a>
+</div>
 <footer>
-  <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
-  <div class="foot-links">
-    <a href="#">Privacy policy</a>
-    <a href="#">Terms of service</a>
+  <div class="foot-brand">
+    <span class="logo-text">CrossGate Legal</span>
+    <span class="logo-sub" style="display:block;margin-top:2px">Trade Risk Intelligence</span>
+    <p>AI-powered trade risk intelligence helping UK importers verify suppliers, identify legal exposure, and connect with vetted counsel across Pakistan, China, and beyond.</p>
+    <div class="foot-social">
+      <a href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+      <a href="mailto:admin@crossgatelegal.com" aria-label="Email"><i class="ti ti-mail"></i></a>
+    </div>
+  </div>
+  <div class="foot-col">
+    <h4>Services</h4>
+    <a href="index.html#services">Supplier verification</a>
+    <a href="index.html#services">Legal risk identification</a>
+    <a href="index.html#services">Vetted local counsel</a>
+  </div>
+  <div class="foot-col">
+    <h4>Company</h4>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
     <a href="contact.html">Contact</a>
+  </div>
+  <div class="foot-col">
+    <h4>Coverage</h4>
+    <a href="index.html#regions">Pakistan</a>
+    <a href="index.html#regions">China</a>
+    <a href="index.html#regions">Central Asia</a>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 CrossGate Legal Ltd. Registered in England &amp; Wales.</div>
+    <a href="#" class="back-top"><i class="ti ti-arrow-up"></i>Back to top</a>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="site.js"></script>
+<script>
+document.querySelector('.back-top')?.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
 </body>
 </html>
