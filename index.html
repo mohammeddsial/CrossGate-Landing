@@ -265,6 +265,8 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
   .cta-banner{margin:48px 24px;padding:44px 24px}
   .faq-section{padding:48px 24px}
 }
+.nav-overlay-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--gold-light);font-size:28px;cursor:pointer;z-index:103;padding:4px}
+.nav-overlay-close:hover{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -315,6 +317,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
 </nav>
 
 <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-overlay-close" aria-label="Close menu"><i class="ti ti-x"></i></button>
   <a href="index.html#services">Services</a>
   <a href="index.html#why">Why now</a>
   <a href="index.html#regions">Regions</a>
@@ -592,6 +595,12 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
 </script>
 <script>
 document.querySelector('.back-top')?.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+<script>
+document.querySelector('.nav-overlay-close')?.addEventListener('click',function(){
+  var o=document.getElementById('navOverlay');
+  if(o){o.classList.remove('open');document.querySelector('.nav-toggle').innerHTML='<i class="ti ti-menu-2"></i>';document.body.style.overflow='';}
+});
 </script>
 </body>
 </html>
