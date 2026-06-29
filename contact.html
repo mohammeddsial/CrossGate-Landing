@@ -320,7 +320,7 @@ textarea{resize:vertical;min-height:96px;line-height:1.6}
       <div class="cf-turnstile" data-sitekey="0x4AAAAAADsndqXwG_k11e_0" data-theme="dark" style="margin-bottom:16px"></div>
 
       <div class="form-actions">
-        <button type="submit" class="btn-primary">Submit request</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Submit request</button>
         <a href="index.html#services" class="btn-ghost">How it works</a>
       </div>
       <p class="form-note text-muted text-[13px]"><i class="ti ti-lock" style="color:var(--gold)"></i> Your details are used only to prepare your response. We typically reply within one business day.</p>
@@ -435,8 +435,40 @@ textarea{resize:vertical;min-height:96px;line-height:1.6}
     var r=document.querySelector('input[name="intent"][value="lawyer"]');
     if(r)r.checked=true;
   }
+
+  // ---- Inline onBlur validation ----
+  var form=document.getElementById('verifyForm');
+  if(form){
+    var reqs=form.querySelectorAll('[required]');
+    reqs.forEach(function(el){
+      el.addEventListener('blur',function(){
+        if(!el.value.trim()){
+          el.style.borderColor='#DE2910';
+        }else if(el.type==='email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)){
+          el.style.borderColor='#DE2910';
+        }else{
+          el.style.borderColor='';
+        }
+      });
+      el.addEventListener('input',function(){
+        if(el.value.trim()) el.style.borderColor='';
+      });
+    });
+  }
+
+  // ---- Submit button spinner + disabled ----
+  var btn=document.getElementById('submitBtn');
+  if(btn && form){
+    form.addEventListener('submit',function(){
+      btn.disabled=true;
+      btn.innerHTML='<i class="ti ti-loader animate-spin" style="display:inline-block;animation:spin 1s linear infinite"></i> Sending...';
+    });
+  }
 })();
 </script>
+<style>
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
 <script>
 document.querySelector('.back-top')?.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
 </script>
