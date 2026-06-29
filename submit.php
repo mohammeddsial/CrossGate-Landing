@@ -26,7 +26,7 @@ if (!empty($_POST["website"])) {
 }
 
 // ---- Cloudflare Turnstile ----
-$turnstileSecret = "REPLACE_WITH_YOUR_SECRET_KEY";
+$turnstileSecret = "0x4AAAAAADsndiEu7aVdIFWwZ2CMzav8AO0";
 $token = $_POST["cf-turnstile-response"] ?? "";
 $ip    = $_SERVER["REMOTE_ADDR"] ?? "";
 $ch    = curl_init("https://challenges.cloudflare.com/turnstile/v0/siteverify");
