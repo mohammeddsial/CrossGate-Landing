@@ -116,7 +116,9 @@ textarea{resize:vertical;min-height:96px;line-height:1.6}
 .form-success i{font-size:30px;color:var(--gold)}
 .form-success h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin:12px 0 8px}
 .form-success p{font-size:13px;color:var(--text-muted);font-weight:300;line-height:1.7}
-.form-error{display:none;background:rgba(222,41,16,0.08);border:1px solid rgba(222,41,16,0.3);border-radius:8px;padding:16px 20px;text-align:center;margin-bottom:18px;font-size:13px;color:#e8553a;font-weight:300}
+.form-error{display:none;background:rgba(222,41,16,0.08);border:1px solid rgba(222,41,16,0.3);border-radius:8px;padding:16px 20px;text-align:center;margin-bottom:18px;font-size:13px;color:#e8553a;font-weight:300;line-height:1.6}
+.form-error a{color:var(--gold);text-decoration:underline}
+.form-error i{vertical-align:middle}
 
 .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px}
 .info-card + .info-card{margin-top:16px}
@@ -185,7 +187,7 @@ textarea{resize:vertical;min-height:96px;line-height:1.6}
 
 <div class="contact-wrap">
   <div>
-    <div class="form-error" id="formError">Please fill in all required fields.</div>
+    <div class="form-error" id="formError"></div>
     <form class="form-card" id="verifyForm" action="submit.php" method="POST" novalidate>
       <fieldset class="form-intent" style="border:none">
         <legend style="position:absolute;left:-9999px">What do you need?</legend>
@@ -326,7 +328,13 @@ textarea{resize:vertical;min-height:96px;line-height:1.6}
     document.getElementById('formSuccess').style.display='block';
   }
   if(p.get('error')){
-    document.getElementById('formError').style.display='block';
+    var msg=document.getElementById('formError');
+    if(p.get('error')==='server'){
+      msg.innerHTML='<i class="ti ti-server-off" style="margin-right:6px"></i> Server error — email could not be sent. Please email us directly at <a href="mailto:hello@crossgatelegal.com" style="color:var(--gold);text-decoration:underline">hello@crossgatelegal.com</a>.';
+    } else {
+      msg.innerHTML='<i class="ti ti-alert-circle" style="margin-right:6px"></i> Please fill in all required fields (name, company, email, supplier, jurisdiction).';
+    }
+    msg.style.display='block';
   }
   if(p.get('intent')==='lawyer'){
     var r=document.querySelector('input[name="intent"][value="lawyer"]');

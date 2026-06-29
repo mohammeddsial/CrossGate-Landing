@@ -34,11 +34,11 @@ $body .= "Registration No: $reg\n";
 $body .= "Jurisdiction: $juris\n\n";
 $body .= "Message:\n$message\n";
 
-$headers  = "From: $email\r\n";
-$headers .= "Reply-To: $email\r\n";
+$headers  = "From: CrossGate Legal <support@crossgatelegal.com>\r\n";
+$headers .= "Reply-To: $name <$email>\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
-if (mail($to, $subject, $body, $headers)) {
+if (mail($to, $subject, $body, $headers, "-f support@crossgatelegal.com")) {
     header("Location: contact.html?success=1");
 } else {
     header("Location: contact.html?error=server");
