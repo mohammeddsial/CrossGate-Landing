@@ -1,46 +1,15 @@
-/* ===========================================================
-   CrossGate Legal — shared site behaviour
-   Loaded on index / about / contact
-   - glass nav + scroll progress
-   - scroll-reveal + animated counters
-   - hero constellation canvas (index only)
-   - "work in progress" preview flow
-   =========================================================== */
 (function () {
   'use strict';
-  var reduceMotion = window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- brand mark (re-used in the loader) ---------- */
-  var MARK =
-    '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<polygon points="20,3 34,12 22,15.5 13.5,11" fill="#C9A96E"/>' +
-    '<polygon points="13,13 25,17.5 18,21.5 8.5,18" fill="#C9A96E" opacity="0.9"/>' +
-    '<polygon points="19.5,20.5 28,25.5 20.5,28.5 14,24.5" fill="#C9A96E" opacity="0.8"/>' +
-    '<polygon points="11,21.5 18.5,25.5 14,34 8.5,27.5" fill="#C9A96E" opacity="0.68"/></svg>';
+  var MARK = '<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="20,3 34,12 22,15.5 13.5,11" fill="#C9A96E"/><polygon points="13,13 25,17.5 18,21.5 8.5,18" fill="#C9A96E" opacity="0.9"/><polygon points="19.5,20.5 28,25.5 20.5,28.5 14,24.5" fill="#C9A96E" opacity="0.8"/><polygon points="11,21.5 18.5,25.5 14,34 8.5,27.5" fill="#C9A96E" opacity="0.68"/></svg>';
 
-  /* ---------- inject shared UI (progress, loader, modal) ---------- */
   function injectChrome() {
     var frag = document.createElement('div');
-    frag.innerHTML =
-      '<div class="scroll-progress" id="scrollProgress"></div>' +
-      '<div class="wip-modal" id="wipModal" role="dialog" aria-modal="true" aria-labelledby="wipTitle">' +
-        '<div class="wip-card">' +
-          '<div class="wip-ring">' +
-            '<svg viewBox="0 0 84 84"><circle class="ring-bg" cx="42" cy="42" r="36"/>' +
-            '<circle class="ring-fg" cx="42" cy="42" r="36"/></svg>' +
-            '<span class="wip-count" id="wipCount">7</span>' +
-          '</div>' +
-          '<h3 id="wipTitle">Work in progress</h3>' +
-          '<p>This page is still being crafted for the full release. ' +
-          'We’ll take you back to the homepage in a moment.</p>' +
-          '<a href="index.html" class="btn-primary">Return home now</a>' +
-        '</div>' +
-      '</div>';
+    frag.innerHTML = '<div class="scroll-progress" id="scrollProgress"></div>';
     while (frag.firstChild) document.body.appendChild(frag.firstChild);
   }
 
-  /* ---------- glass nav + scroll progress ---------- */
   function initScroll() {
     var nav = document.querySelector('.nav');
     var bar = document.getElementById('scrollProgress');
@@ -56,7 +25,6 @@
     onScroll();
   }
 
-  /* ---------- mobile nav toggle ---------- */
   function initNavToggle() {
     var t = document.querySelector('.nav-toggle');
     var l = document.getElementById('navLinks');
@@ -70,53 +38,66 @@
     });
   }
 
-  /* ---------- scroll reveal ---------- */
-  function initReveal() {
-    var els = document.querySelectorAll('[data-reveal]');
-    if (!els.length) return;
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('in'); });
+  function initGsapReveal() {
+    if (typeof gsap === 'undefined') return;
+    if (rm) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
       return;
     }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(function (el) { io.observe(el); });
+    var els = gsap.utils.toArray('[data-reveal]');
+    if (!els.length) return;
+
+    els.forEach(function (el) {
+      var delay = parseFloat(el.style.getPropertyValue('--rd')) || 0;
+      gsap.fromTo(el,
+        { y: 36, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.9,
+          delay: delay,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 86%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+    gsap.fromTo('.hero-tag', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.hero-tag', start: 'top 90%', toggleActions: 'play none none none' } });
   }
 
-  /* ---------- animated counters ---------- */
-  function initCounters() {
+  function initGsapCounters() {
+    if (typeof gsap === 'undefined') return;
     var els = document.querySelectorAll('[data-count]');
     if (!els.length) return;
-    function run(el) {
+    els.forEach(function (el) {
       var target = parseFloat(el.getAttribute('data-count'));
       var suffix = el.getAttribute('data-suffix') || '';
-      if (reduceMotion) { el.textContent = target + suffix; return; }
-      var dur = 1400, start = null;
-      function step(ts) {
-        if (!start) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-    if (!('IntersectionObserver' in window)) { els.forEach(run); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
+      if (rm) { el.textContent = target + suffix; return; }
+      var obj = { val: 0 };
+      gsap.to(obj, {
+        val: target, duration: 1.6, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
+        onUpdate: function () { el.textContent = Math.round(obj.val) + suffix; }
       });
-    }, { threshold: 0.6 });
-    els.forEach(function (el) { io.observe(el); });
+    });
   }
 
-  /* ---------- hero constellation ---------- */
+  function initGsapStaggers() {
+    if (typeof gsap === 'undefined' || rm) return;
+    gsap.fromTo('.services-grid .service-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.services-grid', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.steps .step', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.steps', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.regions-row .region-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.regions-row', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.risk-flags .rflag', { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.risk-flags', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.jur-grid .jur-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.jur-grid', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.team-grid .team-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.team-grid', start: 'top 80%', toggleActions: 'play none none none' } });
+    gsap.fromTo('.cta-banner', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.cta-banner', start: 'top 82%', toggleActions: 'play none none none' } });
+  }
+
   function initConstellation() {
     var canvas = document.getElementById('heroCanvas');
-    if (!canvas || reduceMotion) return;
+    if (!canvas || rm) return;
     var ctx = canvas.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var nodes = [], w = 0, h = 0, raf;
@@ -129,11 +110,7 @@
       var count = Math.max(28, Math.min(64, Math.floor((w * h) / 16000)));
       nodes = [];
       for (var i = 0; i < count; i++) {
-        nodes.push({
-          x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28,
-          r: Math.random() * 1.6 + 0.6
-        });
+        nodes.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28, r: Math.random() * 1.6 + 0.6 });
       }
     }
     function tick() {
@@ -144,8 +121,7 @@
         if (n.x < 0 || n.x > w) n.vx *= -1;
         if (n.y < 0 || n.y > h) n.vy *= -1;
         for (var j = i + 1; j < nodes.length; j++) {
-          var m = nodes[j], dx = n.x - m.x, dy = n.y - m.y;
-          var d = Math.sqrt(dx * dx + dy * dy);
+          var m = nodes[j], dx = n.x - m.x, dy = n.y - m.y, d = Math.sqrt(dx * dx + dy * dy);
           if (d < 132) {
             ctx.strokeStyle = 'rgba(201,169,110,' + (0.16 * (1 - d / 132)) + ')';
             ctx.lineWidth = 1;
@@ -161,53 +137,27 @@
       raf = requestAnimationFrame(tick);
     }
     resize(); tick();
-    window.addEventListener('resize', function () {
-      cancelAnimationFrame(raf); resize(); tick();
-    });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { cancelAnimationFrame(raf); }
-      else { cancelAnimationFrame(raf); tick(); }
-    });
+    window.addEventListener('resize', function () { cancelAnimationFrame(raf); resize(); tick(); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) { cancelAnimationFrame(raf); } else { cancelAnimationFrame(raf); tick(); } });
   }
 
-  /* ---------- work-in-progress preview flow ----------
-     Pages tagged <body data-wip-preview> (About, Contact) open normally,
-     then 7s after load the modal appears, counts down 7s, and returns home. */
-  var wipRunning = false;
-  function showWipModal() {
-    if (wipRunning) return;
-    wipRunning = true;
-    var modal = document.getElementById('wipModal');
-    var count = document.getElementById('wipCount');
-    if (!modal) return;
-    modal.classList.add('show');
-
-    var n = 5;
-    if (count) count.textContent = n;
-    var iv = setInterval(function () {
-      n -= 1;
-      if (count && n >= 0) count.textContent = n;
-      if (n <= 0) clearInterval(iv);
-    }, 1000);
-
-    setTimeout(function () { window.location.href = 'index.html'; }, 5000);
+  function initHeroGradient() {
+    if (typeof gsap === 'undefined' || rm) return;
+    var orbs = document.querySelectorAll('.orb');
+    if (!orbs.length) return;
+    gsap.to('.orb-gold', { x: 24, y: -12, duration: 6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    gsap.to('.orb-green', { x: -18, y: 16, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
   }
 
-  function initWip() {
-    if (document.body.hasAttribute('data-wip-preview')) {
-      setTimeout(showWipModal, 5000);
-    }
-  }
-
-  /* ---------- boot ---------- */
   function boot() {
     injectChrome();
     initScroll();
     initNavToggle();
-    initReveal();
-    initCounters();
+    initGsapReveal();
+    initGsapCounters();
+    initGsapStaggers();
     initConstellation();
-    initWip();
+    initHeroGradient();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
