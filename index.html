@@ -121,6 +121,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" media="print" onload="this.media='all'"/>
 <link rel="stylesheet" href="styles.css"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      colors: {
+        gold: '#C9A96E',
+        'gold-light': '#E4CC9F',
+        cream: '#F0EBE0',
+        deep: '#0B0F0E',
+        surface: '#131918',
+        surface2: '#1A201F',
+        muted: '#94A39A',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        sans: ['DM Sans', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
 <style>
 /* =====================  HERO (bold)  ===================== */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
@@ -249,6 +272,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
 <a href="#main-content" class="skip-link" style="position:absolute;top:-100px;left:0;background:var(--gold);color:var(--deep);padding:10px 16px;z-index:999;font-size:13px;transition:top .2s">Skip to main content</a>
 
 <nav class="nav">
+  <div class="nav-inner">
   <a class="logo" href="index.html" aria-label="CrossGate Legal — home">
     <span class="logo-mark" aria-hidden="true">
       <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -273,6 +297,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
     <a href="contact.html">Contact</a>
   </div>
   <a href="contact.html" class="nav-cta">Start verification</a>
+  </div>
 </nav>
 
 <div class="nav-overlay" id="navOverlay" aria-hidden="true">
@@ -453,6 +478,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
   </div>
 </section>
 
+<div class="testimonials-wrap">
 <section class="testimonial-strip" aria-labelledby="testimonials-heading">
   <div class="kicker-line" data-reveal></div>
   <div class="section-label" data-reveal>What clients say</div>
@@ -481,6 +507,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
     </div>
   </div>
 </section>
+</div>
 
 <section class="cta-banner" data-reveal>
   <div class="cta-title">Safe trade starts here.</div>
@@ -496,6 +523,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
 <div class="mobile-cta">
   <a href="contact.html" class="btn-primary">Verify a supplier</a>
 </div>
+<div class="footer-wrap">
 <footer>
   <div class="foot-brand">
     <span class="logo-text">CrossGate Legal</span>
@@ -530,6 +558,7 @@ h1 em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold
     <a href="#" class="back-top"><i class="ti ti-arrow-up"></i>Back to top</a>
   </div>
 </footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
